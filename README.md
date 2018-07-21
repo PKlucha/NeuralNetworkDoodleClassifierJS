@@ -14,7 +14,7 @@ Your drawing is stored every time Google's AI guesses what you have drawn.
 ### Neural network is training and testing itself with given .bin files when the server is starting.
 ### When server's console says: "Listening on port 3000" server is ready to go (port is 3000 in default).
 ### You can acces user interface by typing: http://localhost:3000/ or http://127.0.0.1:3000/
-## Also through your IP if you have internet connection: your_ip:3000 
+#### Also through your IP if you have internet connection: your_ip:3000 
 ### On client side there is user interface where you can draw your own picture. After clicking "Guess" button drawing will be sent to server and Fed Forward through the net.Then the result will be sent back.
 ### Client side code prints the answer in HTML below the buttons.
 ### Drawings in the browser should be as big as possible, so the network work as intended.

@@ -142,3 +142,5 @@ class Matrix {
 		return array;
 	}
 }
+
+module.exports.Matrix = Matrix;

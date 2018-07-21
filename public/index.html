@@ -12,10 +12,42 @@
     	<script src="P5/addons/p5.sound.min.js"></script>
     	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 		
-		<script src="sketch.js"></script>
-		<script src="NeuralNetwork.js"></script>
-		<script src="MatrixLib.js"></script>
+    	<script src="sketch.js"></script>
+
+		<style>
+			canvas{
+				border-style: solid;
+				border-color: white;
+				border-width: 1px;
+			}
+			button{
+				position: absolute;
+				color: white;
+				font-size: 24pt;
+				top: 290px;
+			}
+			button.guess{
+				left: 10px;
+			}
+			button.reset{
+				left: 160px;
+			}
+			div.down{
+				position: absolute;
+				top: 350px;
+				left: 50px;
+				color: #EEEE;
+				font-size: 24pt;
+			}
+		</style>
 	</head>
 	<body style="background-color: black;">
+		<button class="guess" id="guess">
+			Guess
+		</button>
+		<button class="reset" id="reset">
+			Clear
+		</button>
+		<div id="answer" class="down"></div>
 	</body>
 </html>

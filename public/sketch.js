@@ -61,6 +61,7 @@ function setup() {
 }
 
 function draw() {
+	// Drawn line width, may be important in picture classification. Don't know the best one, yet
 	strokeWeight(3);
 	stroke(255);
 	if(mouseIsPressed) {

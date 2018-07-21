@@ -16,11 +16,11 @@ app.use(express.static('public'));
 
 const len = 784; // Length of one picture in data (28*28)
 const totalDataObjects = 10000; // Number of images sent from server
-const trainingRatio = 0.8; // Percent of data used as training data
+const trainingRatio = 0.9; // Percent of data used as training data
 const epsilon = 0.01; // Accepted error of Network's output
 const dataClasses = 3;
 
-const epoch = 1; // How many times train with full set of training examples
+const epoch = 2; // How many times train with full set of training examples
 const learningRateMultiplicator = 1;
 
 // Maping for classes

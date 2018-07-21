@@ -17,4 +17,4 @@ Your drawing is stored every time Google's AI guesses what you have drawn.
 #### Also through your IP if you have internet connection: your_ip:3000 
 ### On client side there is user interface where you can draw your own picture. After clicking "Guess" button drawing will be sent to server and Fed Forward through the net.Then the result will be sent back.
 ### Client side code prints the answer in HTML below the buttons.
-### Drawings in the browser should be as big as possible, so the network work as intended.
+### Drawings made by user in the browser should be as big as possible, so the network work as intended (its resizing the drawing to 28*28pix drawing).

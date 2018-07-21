@@ -15,13 +15,13 @@ app.use(express.static('public'));
 // -------------------------------------------------------------------------
 
 const len = 784; // Length of one picture in data (28*28)
-const totalDataObjects = 1000; // Number of images sent from server
+const totalDataObjects = 10000; // Number of images sent from server
 const trainingRatio = 0.8; // Percent of data used as training data
-const epsilon = 0.1; // Accepted error of Network's output
-const learningRateMultiplicator = 0.99999; // 0.99995 is best for 3 classes and short learning (1-4e) 
+const epsilon = 0.01; // Accepted error of Network's output
 const dataClasses = 3;
 
-const epoch = 3; // How many times train with full set of training examples
+const epoch = 1; // How many times train with full set of training examples
+const learningRateMultiplicator = 1;
 
 // Maping for classes
 const AIRPLAIN = 0;
@@ -31,7 +31,7 @@ const BICYCLE = 2;
 var socket; // Connection to server
 var data; // All of the data from server
 var brain; // NeuralNetwork Object // Maciek
-var airplains = {};
+var airplanes = {};
 var apples = {};
 var bicycles = {};
 
@@ -42,16 +42,16 @@ var dataReady; // Boolean flag
 dataReady = false;
 
 console.log("Loading files...");
-data[0] = fs.readFileSync('./public/data/airplane1000.bin');
-data[1] = fs.readFileSync('./public/data/apple1000.bin');
-data[2] = fs.readFileSync('./public/data/bicycle1000.bin');
+data[0] = fs.readFileSync('./public/data/airplane10000.bin');
+data[1] = fs.readFileSync('./public/data/apple10000.bin');
+data[2] = fs.readFileSync('./public/data/bicycle10000.bin');
 console.log("Files loaded!");
 
 data[0] = new Uint8Array(data[0]);
 data[1] = new Uint8Array(data[1]);
 data[2] = new Uint8Array(data[2]);
 
-prepareData(airplains, data, AIRPLAIN);
+prepareData(airplanes, data, AIRPLAIN);
 prepareData(apples, data, APPLE);
 prepareData(bicycles, data, BICYCLE);
 
@@ -99,7 +99,7 @@ function shuffle(array) {
 
 // Creating one training data array
 let trainingArray = [];
-trainingArray = trainingArray.concat(airplains.training, apples.training, bicycles.training);
+trainingArray = trainingArray.concat(airplanes.training, apples.training, bicycles.training);
 
 console.log("Training...");
 // Main training loop! --------------------------------------------------
@@ -134,7 +134,7 @@ console.log("Network trained for " + epoch + " epoch/s! ("
 
 // Testing --------------------------------------------------
 let testingArray = [];
-testingArray = testingArray.concat(airplains.testing, apples.testing, bicycles.testing);
+testingArray = testingArray.concat(airplanes.testing, apples.testing, bicycles.testing);
 
 // Feed forward 1000 times to test Networks accuracy
 let accuracy = 0;
@@ -163,11 +163,21 @@ console.log("Network's accuracy is " + (accuracy / 10) + "%");
 var server = app.listen(3000);
 var io = socket(server);
 
-// New connection accured. Sending training data
-io.sockets.on('connection', function(socket) {
-	io.sockets.connected[socket.id].emit("training_data", brain.feedForward(airplains.testing[50]));
-	console.log("New connection: " + socket.id + ", training data has been sent!");
-});
-
 console.log("Server is running!");
 console.log("Listening on port 3000...");
+
+// New connection accured. Sending training data
+io.sockets.on('connection', function(socket) {
+	id = socket.id;
+	console.log("New connection: " + id);
+	io.sockets.connected[id].emit('welcome', id);
+
+	socket.on('sendDraw', function(input) {
+		// Feeding input sent by client to network
+		let res = brain.feedForward(input);
+
+		// Sending back result of FeedForward
+		io.sockets.connected[id].emit('sendResult', res);
+		console.log("Result sent: " + res);
+	});
+});

@@ -15,10 +15,10 @@ Your drawing is stored every time Google's AI guesses what you have drawn.
 ### Included .bin training files have 10,000 pictures, it may take a while for network to finish training.
 #### This may be changed to 1,000 pictures in each file by simply changing data loading file paths (in server.js) from, for example, /apple10000.bin to /apple1000.bin.
 ### When server's console says: "Listening on port 3000" server is ready to go (port is 3000 in default).
-### You can acces user interface by typing: http://localhost:3000/ or http://127.0.0.1:3000/
-#### Also through your IP if you have internet connection: your_ip:3000 
 ### On client side there is user interface where you can draw your own picture. After clicking "Guess" button drawing will be sent to server and Fed Forward through the net.Then the result will be sent back.
 ### Client side code prints the answer in HTML below the buttons.
+### You can acces user interface by typing: http://localhost:3000/ or http://127.0.0.1:3000/
+#### Also through your IP if you have internet connection: your_ip:3000 
 ### Drawings made by user in the browser should be as big as possible, so the network work as intended (its resizing the drawing to 28*28pix picture, that's preety small).
 
 ## Network can reckognize drawings of:
@@ -26,7 +26,7 @@ Your drawing is stored every time Google's AI guesses what you have drawn.
 ### Apples
 ### Bicycles
 
-### Network is trained on Google's Quick Draw database, so for example, picture detailed too much might not be reckognized.
-### For better effects first visit link in first paragraph and look at the pictures yourself.
+#### Network is trained on Google's Quick Draw database, so for example, picture detailed too much might not be reckognized.
+#### For better effects first visit link in first paragraph and look at the pictures yourself.
 
-## Feel free to clone and send pull requests, or contribute in any other way.
+### Feel free to clone and send pull requests, or contribute in any other way.

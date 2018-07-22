@@ -20,3 +20,13 @@ Your drawing is stored every time Google's AI guesses what you have drawn.
 ### On client side there is user interface where you can draw your own picture. After clicking "Guess" button drawing will be sent to server and Fed Forward through the net.Then the result will be sent back.
 ### Client side code prints the answer in HTML below the buttons.
 ### Drawings made by user in the browser should be as big as possible, so the network work as intended (its resizing the drawing to 28*28pix picture, that's preety small).
+
+## Network can reckognize drawings of:
+### Airplains
+### Apples
+### Bicycles
+
+### Network is trained on Google's Quick Draw database, so for example, picture detailed too much might not be reckognized.
+### For better effects first visit link in first paragraph and look at the pictures yourself.
+
+## Feel free to clone and send pull requests, or contribute in any other way.

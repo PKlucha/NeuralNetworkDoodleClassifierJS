@@ -9,9 +9,6 @@ function setup() {
 	background(0);
 	frameRate(150);
 
-	// Connecting to server
-	socket = io.connect('http://localhost:3000');
-
 	// Sending drawn image to server by Guess button
 	let guessButton = select('#guess');
 	guessButton.mouseReleased(function() {
@@ -29,11 +26,8 @@ function setup() {
 		socket = io.connect('http://localhost:3000');
 
 		// Sending the drawing to server
-		socket.on('welcome', function(id) {
-			console.log("Data sent!");
-			socket.emit('sendDraw', input);
-
-		});
+		socket.emit('sendDraw', input);
+		console.log("Data sent!");
 
 		socket.on('sendResult', function(res) {
 			result = res;
@@ -57,12 +51,13 @@ function setup() {
 	clearButton.mouseReleased(function() {
 		background(0);
 		document.getElementById("answer").innerHTML = "";
+		result = [];
 	});
 }
 
 function draw() {
 	// Drawn line width, may be important in picture classification. Don't know the best one, yet
-	strokeWeight(3);
+	strokeWeight(4);
 	stroke(255);
 	if(mouseIsPressed) {
 		line(pmouseX, pmouseY, mouseX, mouseY);

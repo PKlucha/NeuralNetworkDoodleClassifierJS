@@ -20,7 +20,7 @@ const trainingRatio = 0.9; // Percent of data used as training data
 const epsilon = 0.01; // Accepted error of Network's output
 const dataClasses = 3;
 
-const epoch = 2; // How many times train with full set of training examples
+const epoch = 1; // How many times train with full set of training examples
 const learningRateMultiplicator = 1;
 
 // Maping for classes
@@ -59,7 +59,7 @@ dataReady = true;
 console.log("Data ready!");
 
 // Creating Neural Network
-brain = new nn.NeuralNetwork(len, 64, dataClasses); // 784 inputs, 64 hidden and 2 outputs
+brain = new nn.NeuralNetwork(len, 24, dataClasses); // 784 inputs, 24 hidden and 2 outputs
 
 function prepareData(category, data, numInData) { // numInData is a offset for data from server
 	category.training = [];
@@ -170,7 +170,6 @@ console.log("Listening on port 3000...");
 io.sockets.on('connection', function(socket) {
 	id = socket.id;
 	console.log("New connection: " + id);
-	io.sockets.connected[id].emit('welcome', id);
 
 	socket.on('sendDraw', function(input) {
 		// Feeding input sent by client to network

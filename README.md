@@ -13,7 +13,7 @@ Your drawing is stored every time Google's AI guesses what you have drawn.
 ## How it works:
 ### Neural network is training and testing itself with given .bin files when the server is starting.
 ### Included .bin training files have 10,000 pictures, it may take a while for network to finish training.
-#### This may be changed to 1,000 pictures in each file by only changing data loading file paths (in server.js) from, for example, /apple10000.bin to /apple1000.bin.
+#### This may be changed to 1,000 pictures in each file by simply changing data loading file paths (in server.js) from, for example, /apple10000.bin to /apple1000.bin.
 ### When server's console says: "Listening on port 3000" server is ready to go (port is 3000 in default).
 ### You can acces user interface by typing: http://localhost:3000/ or http://127.0.0.1:3000/
 #### Also through your IP if you have internet connection: your_ip:3000 
